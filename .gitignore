@@ -10,9 +10,6 @@ node_modules/
 dist/
 build/
 
-# Grant / strategy docs (keep out of public repo for judges)
-GRANT_ASK.md
-
 # IDE and OS
 .DS_Store
 *.log
