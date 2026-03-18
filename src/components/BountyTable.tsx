@@ -77,8 +77,8 @@ export function BountyTable({ simulatedBounties = [] }: BountyTableProps) {
                 ? Array.from({ length: count }, (_, i) => i + 1).map((id) => (
                     <BountyRow key={id} bountyId={id} />
                   ))
-                : demoRows.map((b, i) => (
-                    <tr key={'key' in b ? b.key : `demo-${b.id}`} className="border-b border-border table-row-hover">
+                : demoRows.map((b) => (
+                    <tr key={'key' in b ? String((b as { key?: string }).key) : `demo-${b.id}`} className="border-b border-border table-row-hover">
                       <td className="px-4 py-3 font-mono text-sm text-zinc-300">{b.id}</td>
                       <td className="px-4 py-3 font-mono text-sm text-zinc-400">
                         <a

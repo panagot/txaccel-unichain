@@ -10,7 +10,7 @@ type PostBountyFormProps = {
 }
 
 export function PostBountyForm({ onSimulatePost }: PostBountyFormProps) {
-  const { address, isConnected } = useAccount()
+  const { isConnected } = useAccount()
   const [txid, setTxid] = useState('')
   const [expiryBlock, setExpiryBlock] = useState('')
   const [amount, setAmount] = useState('')
