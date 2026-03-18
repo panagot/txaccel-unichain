@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Env and secrets (contract address is not secret but keep .env out)
+.env
+.env.local
+.env.*.local
+
+# Build
+dist/
+build/
+
+# Grant / strategy docs (keep out of public repo for judges)
+GRANT_ASK.md
+
+# IDE and OS
+.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Vite
+*.local

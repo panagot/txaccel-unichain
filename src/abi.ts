@@ -1,0 +1,68 @@
+export const BOUNTY_ESCROW_ABI = [
+  {
+    inputs: [
+      { name: 'btcTxidHex', type: 'string' },
+      { name: 'expiryBlock', type: 'uint256' },
+    ],
+    name: 'postBounty',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      { name: 'bountyId', type: 'uint256' },
+      { name: 'blockHeight', type: 'uint256' },
+      { name: 'recipient', type: 'address' },
+      { name: 'v', type: 'uint8' },
+      { name: 'r', type: 'bytes32' },
+      { name: 's', type: 'bytes32' },
+    ],
+    name: 'claim',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{ name: 'bountyId', type: 'uint256' }],
+    name: 'refund',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'nextBountyId',
+    outputs: [{ name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ name: 'bountyId', type: 'uint256' }],
+    name: 'getBounty',
+    outputs: [
+      { name: 'btcTxidHash', type: 'bytes32' },
+      { name: 'amountWei', type: 'uint256' },
+      { name: 'expiryBlock', type: 'uint256' },
+      { name: 'poster', type: 'address' },
+      { name: 'claimed', type: 'bool' },
+      { name: 'claimer', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ name: '', type: 'uint256' }],
+    name: 'bounties',
+    outputs: [
+      { name: 'btcTxidHash', type: 'bytes32' },
+      { name: 'amountWei', type: 'uint256' },
+      { name: 'expiryBlock', type: 'uint256' },
+      { name: 'poster', type: 'address' },
+      { name: 'claimed', type: 'bool' },
+      { name: 'claimer', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+] as const
