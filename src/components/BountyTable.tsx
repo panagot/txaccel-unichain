@@ -47,7 +47,7 @@ export function BountyTable({ simulatedBounties = [] }: BountyTableProps) {
           <InfoIcon content="Miners use this list to see which Bitcoin txids have bounties. Include the tx in your block, then sign and claim in the form above." />
         </h2>
         <span className="font-mono text-zinc-500 text-sm">
-          {count > 0 ? `${count} bounty(ies)` : showDemo ? `Demo: ${demoRows.length} bounty(ies)` : 'No bounties'}
+          {count > 0 ? `${count} bounty(ies)` : showDemo ? `${demoRows.length} bounty(ies)` : 'No bounties'}
         </span>
       </div>
       <div className="border border-border rounded-xl overflow-hidden bg-surface-900">

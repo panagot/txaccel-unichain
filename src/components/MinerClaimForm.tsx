@@ -6,10 +6,13 @@ import { BOUNTY_ESCROW_ABI } from '../abi'
 import { CONTRACT_ADDRESS, IS_CONTRACT_DEPLOYED } from '../config'
 import { InfoIcon } from './Tooltip'
 
+const PLACEHOLDER_BOUNTY_ID = '3'
+const PLACEHOLDER_BLOCK_HEIGHT = '491650'
+
 export function MinerClaimForm() {
   const { address, isConnected } = useAccount()
-  const [bountyId, setBountyId] = useState('')
-  const [blockHeight, setBlockHeight] = useState('')
+  const [bountyId, setBountyId] = useState(PLACEHOLDER_BOUNTY_ID)
+  const [blockHeight, setBlockHeight] = useState(PLACEHOLDER_BLOCK_HEIGHT)
   const [recipient, setRecipient] = useState('')
   const [error, setError] = useState('')
   const [demoClaimSuccess, setDemoClaimSuccess] = useState(false)
@@ -120,7 +123,7 @@ export function MinerClaimForm() {
           )}
           {isSuccess && <p className="text-emerald-400 text-sm">Claim submitted. Bounty sent to recipient.</p>}
           {demoClaimSuccess && (
-            <p className="text-emerald-400 text-sm">Demo: claim submitted. With the contract deployed, the bounty would be sent to the recipient after you sign.</p>
+            <p className="text-emerald-400 text-sm">Done. With a live contract you’d sign and receive the bounty.</p>
           )}
           <div className="flex items-center gap-3">
             <button
@@ -130,11 +133,8 @@ export function MinerClaimForm() {
             >
               {IS_CONTRACT_DEPLOYED
                 ? (isPending || isConfirming ? 'Confirming…' : 'Sign & claim')
-                : 'Simulate claim (demo)'}
+                : 'Try it'}
             </button>
-            {!IS_CONTRACT_DEPLOYED && (
-              <span className="text-zinc-500 text-xs">No contract — demo only. Deploy contract to enable real claims.</span>
-            )}
           </div>
         </form>
       )}

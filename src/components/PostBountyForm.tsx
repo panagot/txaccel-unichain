@@ -9,11 +9,15 @@ type PostBountyFormProps = {
   onSimulatePost?: (txid: string, amount: string, expiryBlock: string) => void
 }
 
+const PLACEHOLDER_TXID = '0277df322052e78169c93a7557a4cc42c75ebbab119da17b5157fff7d5a91b12'
+const PLACEHOLDER_AMOUNT = '0.01'
+const PLACEHOLDER_EXPIRY = '491650'
+
 export function PostBountyForm({ onSimulatePost }: PostBountyFormProps) {
   const { isConnected } = useAccount()
-  const [txid, setTxid] = useState('')
-  const [expiryBlock, setExpiryBlock] = useState('')
-  const [amount, setAmount] = useState('')
+  const [txid, setTxid] = useState(PLACEHOLDER_TXID)
+  const [expiryBlock, setExpiryBlock] = useState(PLACEHOLDER_EXPIRY)
+  const [amount, setAmount] = useState(PLACEHOLDER_AMOUNT)
   const [error, setError] = useState('')
   const [demoSuccess, setDemoSuccess] = useState(false)
 
@@ -117,7 +121,7 @@ export function PostBountyForm({ onSimulatePost }: PostBountyFormProps) {
           <p className="text-emerald-400 text-sm">Bounty posted. Refresh to see it in the list.</p>
         )}
         {demoSuccess && (
-          <p className="text-emerald-400 text-sm">Demo: bounty added to the table below. (No contract — simulation only.)</p>
+          <p className="text-emerald-400 text-sm">Added. Check the table above.</p>
         )}
         <div className="flex items-center gap-3">
           <button
@@ -128,12 +132,9 @@ export function PostBountyForm({ onSimulatePost }: PostBountyFormProps) {
             {IS_CONTRACT_DEPLOYED
               ? (isPending || isConfirming ? 'Confirming…' : 'Post bounty')
               : onSimulatePost
-                ? 'Simulate post (demo)'
+                ? 'Add to board'
                 : 'Post bounty'}
           </button>
-          {!IS_CONTRACT_DEPLOYED && onSimulatePost && (
-            <span className="text-zinc-500 text-xs">No contract deployed — simulating for demo</span>
-          )}
         </div>
       </form>
     </section>
