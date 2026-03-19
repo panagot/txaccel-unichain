@@ -1,5 +1,7 @@
 # TxAccel — Bitcoin tx bounties on Unichain
 
+**Repo:** [github.com/panagot/txaccel-unichain](https://github.com/panagot/txaccel-unichain)
+
 A **mempool.space-inspired** prototype: users post **ETH bounties on Unichain** for **Bitcoin txids**; miners include the tx, attest, and **claim on Unichain**.
 
 ## What’s in this repo

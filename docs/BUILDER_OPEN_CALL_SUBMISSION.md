@@ -64,7 +64,7 @@ If not deployed yet: deploy first, or write **“Deploying week of [date] — co
 
 ## Link to public research *
 
-- README + architecture: `[YOUR_GITHUB_URL]` (e.g. `https://github.com/[you]/unichain-tx-bounties`)
+- README + architecture: `https://github.com/panagot/txaccel-unichain`
 - Optional: link to this doc or a short Mirror/Notion **1-pager** on bounty + attestation design.
 
 ## Link to project discord*
