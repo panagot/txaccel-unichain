@@ -3,16 +3,17 @@ pragma solidity ^0.8.19;
 
 /**
  * @title BountyEscrow
- * @notice Prototype: Bitcoin MEV / Tx Accelerator bounty escrow.
- *         Users lock a bounty for a Bitcoin txid; miner proves they included it and claims.
- *         On Hemi mainnet, verification would use hBK (tx in block + coinbase → miner).
+ * @notice Prototype: Bitcoin tx bounty escrow with settlement on Unichain (ETH).
+ *         Users lock a bounty for a Bitcoin txid; miner proves they included it and claims on L2.
+ *         In production, verification should tie the claim to Bitcoin inclusion + miner identity
+ *         (e.g. coinbase linkage), not only an EOA signature.
  *         This version uses EOA signature for demo (miner = signer of claim message).
  */
 contract BountyEscrow {
     struct Bounty {
         bytes32 btcTxidHash;      // keccak256(btcTxid) for storage
         uint256 amountWei;        // bounty amount in wei
-        uint256 expiryBlock;      // refund allowed after this block
+        uint256 expiryBlock;      // Unichain L2 block: refund after block.number > this (see refund())
         address poster;          // who posted the bounty
         bool claimed;            // true once claimed
         address claimer;         // who claimed (miner proxy in demo)
@@ -36,7 +37,7 @@ contract BountyEscrow {
     /**
      * @notice Post a bounty for a Bitcoin txid. Call with msg.value = bounty amount.
      * @param btcTxidHex  Bitcoin txid as hex string (e.g. 64-char hex).
-     * @param expiryBlock Bitcoin block height after which poster can refund.
+     * @param expiryBlock Unichain (L2) block number after which poster may refund if unclaimed.
      */
     function postBounty(string calldata btcTxidHex, uint256 expiryBlock) external payable {
         if (msg.value == 0) revert WrongValue();
@@ -56,10 +57,10 @@ contract BountyEscrow {
 
     /**
      * @notice Claim a bounty. Miner (or authorized claimer) signs (bountyId, blockHeight, recipient).
-     *         In production on Hemi: verify Bitcoin signature from coinbase address for blockHeight.
+     *         In production: verify Bitcoin signature from coinbase address for blockHeight.
      * @param bountyId     Id of the bounty.
      * @param blockHeight  Bitcoin block height where tx was included (for verification / event).
-     * @param recipient    Hemi address to receive the bounty.
+     * @param recipient    Address on Unichain to receive the bounty (ETH).
      * @param v,r,s        EOA signature over keccak256(abi.encodePacked(bountyId, blockHeight, recipient)).
      */
     function claim(
@@ -79,7 +80,7 @@ contract BountyEscrow {
         address signer = ecrecover(ethSignedHash, v, r, s);
         if (signer == address(0)) revert InvalidSignature();
 
-        // In production: check signer is the miner of Bitcoin block blockHeight (via hBK).
+        // In production: check signer is the miner of Bitcoin block blockHeight (inclusion + coinbase proof).
         // For demo we accept any signer as "miner" and pay recipient.
         b.claimed = true;
         b.claimer = recipient;

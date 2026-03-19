@@ -1,5 +1,4 @@
-// Set this to your deployed BountyEscrow contract address.
-// Use Sepolia or Hemi testnet for testing.
+// Set this to your deployed BountyEscrow contract address on Unichain Sepolia or Unichain mainnet.
 const ZERO = '0x0000000000000000000000000000000000000000' as const
 export const CONTRACT_ADDRESS =
   (import.meta.env.VITE_BOUNTY_ESCROW_ADDRESS as `0x${string}` | undefined) || ZERO

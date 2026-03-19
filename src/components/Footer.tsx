@@ -5,14 +5,14 @@ export function Footer() {
     <footer className="border-t border-border mt-16 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-zinc-500 text-sm">
-          TxAccel — Bitcoin MEV marketplace prototype. Built for{' '}
+          TxAccel — BTC‑Fi bounty prototype. Settlement on{' '}
           <a
-            href="https://hemi.xyz"
+            href="https://www.unichain.org/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:underline"
           >
-            Hemi
+            Unichain
           </a>
           .
         </p>
@@ -21,12 +21,12 @@ export function Footer() {
             For miners
           </Link>
           <a
-            href="https://docs.hemi.xyz/incentives/grants"
+            href="https://docs.unichain.org/docs"
             target="_blank"
             rel="noopener noreferrer"
             className="text-zinc-500 hover:text-white text-sm transition-colors"
           >
-            Grants
+            Docs
           </a>
           <a
             href="https://mempool.space"

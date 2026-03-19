@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const STEPS = [
   {
     title: 'Post bounty',
-    body: 'Submit a Bitcoin txid and lock a reward (e.g. in ETH or HEMI). Your bounty is escrowed on Hemi.',
+    body: 'Submit a Bitcoin txid and lock a reward in ETH. Your bounty is escrowed on Unichain.',
   },
   {
     title: 'Miner includes tx',

@@ -103,13 +103,13 @@ export function PostBountyForm({ onSimulatePost }: PostBountyFormProps) {
           <div>
             <label className="block text-zinc-400 text-sm font-medium mb-1.5 flex items-center gap-1.5">
               Expiry block (optional)
-              <InfoIcon content="Bitcoin block height after which you can refund the bounty if no one has claimed." />
+              <InfoIcon content="Unichain L2 block number: after this height you can refund if the bounty is still unclaimed (matches contract refund check)." />
             </label>
             <input
               type="text"
               value={expiryBlock}
               onChange={(e) => setExpiryBlock(e.target.value)}
-              placeholder="Bitcoin block height"
+              placeholder="Unichain block number"
               className="w-full font-mono text-sm bg-surface-800 border border-border rounded-lg px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent"
             />
           </div>

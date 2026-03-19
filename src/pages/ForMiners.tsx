@@ -24,7 +24,7 @@ export function ForMiners() {
           How Bitcoin miners earn the reward
         </h1>
         <p className="text-zinc-400 text-sm mb-10">
-          Step-by-step: from discovering bounties to receiving payment on Hemi.
+          Step-by-step: from discovering bounties to receiving payment on Unichain.
         </p>
 
         <div className="space-y-10">
@@ -60,26 +60,26 @@ export function ForMiners() {
               Sign the claim message
             </h2>
             <p className="text-zinc-400 text-sm leading-relaxed mb-2">
-              To prove you are the miner (and to bind the claim to a specific recipient), you sign a message that includes the <strong className="text-zinc-300">bounty ID</strong>, the <strong className="text-zinc-300">Bitcoin block height</strong> where you included the tx, and the <strong className="text-zinc-300">Hemi address</strong> that should receive the reward.
+              To prove you are the miner (and to bind the claim to a specific recipient), you sign a message that includes the <strong className="text-zinc-300">bounty ID</strong>, the <strong className="text-zinc-300">Bitcoin block height</strong> where you included the tx, and the <strong className="text-zinc-300">Unichain address</strong> that should receive the reward.
             </p>
             <p className="text-zinc-400 text-sm leading-relaxed mb-2 font-mono text-xs bg-surface-800 px-3 py-2 rounded border border-border">
               message = keccak256(bountyId, blockHeight, recipientAddress)
             </p>
             <p className="text-zinc-500 text-xs">
-              In this prototype you sign with your Ethereum-style wallet (e.g. MetaMask). On Hemi mainnet, the contract would verify a <strong className="text-zinc-400">Bitcoin</strong> signature from the address that received the block reward (coinbase) for that block, so only the real miner can claim.
+              In this prototype you sign with your Ethereum-style wallet (e.g. MetaMask). In production, the contract would verify a <strong className="text-zinc-400">Bitcoin</strong> signature from the address that received the block reward (coinbase) for that block, so only the real miner can claim.
             </p>
           </section>
 
           <section>
             <h2 className="text-lg font-medium text-white mb-3 flex items-center gap-2">
               <span className="w-6 h-6 rounded-full bg-accent/20 text-accent font-mono text-xs flex items-center justify-center">4</span>
-              Submit the claim on Hemi
+              Submit the claim on Unichain
             </h2>
             <p className="text-zinc-400 text-sm leading-relaxed mb-2">
               Call the escrow contract’s <strong className="text-zinc-300">claim(bountyId, blockHeight, recipient, v, r, s)</strong> function with your signature. The contract checks the signature and, if valid, sends the escrowed bounty to the recipient address. The bounty is then marked as claimed so it cannot be claimed again.
             </p>
             <p className="text-zinc-500 text-xs">
-              On the TxAccel app, use the <strong className="text-zinc-400">Claim as miner</strong> form: enter bounty ID and block height, set the recipient (default is your connected wallet), then click “Sign & claim”. Your wallet will ask you to sign; after you submit the transaction, the reward is sent on Hemi.
+              On the TxAccel app, use the <strong className="text-zinc-400">Claim as miner</strong> form: enter bounty ID and block height, set the recipient (default is your connected wallet), then click “Sign & claim”. Your wallet will ask you to sign; after you submit the transaction, the reward is sent on Unichain.
             </p>
           </section>
 
@@ -89,7 +89,7 @@ export function ForMiners() {
               You receive the reward
             </h2>
             <p className="text-zinc-400 text-sm leading-relaxed">
-              The reward (e.g. ETH or HEMI) is transferred to the recipient address you specified. You need a wallet that supports the Hemi network (or the chain where the contract is deployed) to receive it. No further action is required once the claim transaction confirms.
+              The reward (ETH on Unichain) is transferred to the recipient address you specified. Use a wallet on Unichain mainnet or Sepolia (matching where the contract is deployed). No further action is required once the claim transaction confirms.
             </p>
           </section>
 
@@ -98,7 +98,7 @@ export function ForMiners() {
             <ul className="text-zinc-400 text-sm space-y-1 list-disc list-inside">
               <li>Use the Open bounties table (or API) to see which Bitcoin txids have rewards.</li>
               <li>Include that tx in your next mined block.</li>
-              <li>Sign the claim message (bountyId + blockHeight + recipient) with the key that proves you’re the miner (Bitcoin coinbase key on Hemi mainnet; EOA in this demo).</li>
+              <li>Sign the claim message (bountyId + blockHeight + recipient) with the key that proves you’re the miner (Bitcoin coinbase key in production; EOA in this demo).</li>
               <li>Submit <code className="text-zinc-300 font-mono">claim(...)</code> on the escrow contract; the bounty is sent to your chosen recipient.</li>
             </ul>
           </section>

@@ -13,7 +13,7 @@ export function Header() {
         <Link to="/" className="flex items-center gap-2.5 text-white no-underline">
           <Logo className="w-9 h-9 text-zinc-300" />
           <span className="font-semibold text-lg tracking-tight">TxAccel</span>
-          <span className="text-zinc-500 text-sm font-mono hidden sm:inline">/ Hemi</span>
+          <span className="text-zinc-500 text-sm font-mono hidden sm:inline">/ Unichain</span>
         </Link>
 
         <nav className="flex items-center gap-4">
@@ -24,7 +24,7 @@ export function Header() {
             For miners
           </Link>
           <a
-            href="https://docs.hemi.xyz/incentives/grants"
+            href="https://www.uniswapfoundation.org/grants"
             target="_blank"
             rel="noopener noreferrer"
             className="text-zinc-400 hover:text-white text-sm font-medium transition-colors"

@@ -18,9 +18,9 @@ export function ValueProp() {
           </p>
         </div>
         <div>
-          <p className="text-white font-medium mb-1">Hemi-native</p>
+          <p className="text-white font-medium mb-1">Unichain settlement</p>
           <p className="text-zinc-400 text-sm">
-            Designed for hBK: on mainnet, verify Bitcoin tx inclusion and miner via coinbase.
+            Bounties live in ETH on Unichain. Production path: verify Bitcoin inclusion + miner (e.g. coinbase linkage).
           </p>
         </div>
       </div>

@@ -102,7 +102,7 @@ export function BountyTable({ simulatedBounties = [] }: BountyTableProps) {
         </div>
       </div>
       <p className="text-zinc-500 text-xs mt-3">
-        Miners: include the tx in a block, then sign and claim on Hemi. Txids link to{' '}
+        Miners: include the tx in a block, then sign and claim on Unichain. Txids link to{' '}
         <a
           href="https://mempool.space"
           target="_blank"
